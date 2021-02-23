@@ -52,9 +52,11 @@ async fn main() {
 		.with_env_filter(EnvFilter::from_default_env())
 		.finish();
 
-	tracing::subscriber::set_global_default(subscriber).expect("Failed to start the logger");
+	tracing::subscriber::set_global_default(subscriber)
+		.expect("Failed to start the logger");
 
-	let token = env::var("DISCORD_TOKEN").expect("Expected a token in the environment");
+	let token = env::var("DISCORD_TOKEN")
+		.expect("Expected a token in the environment");
 
 	let http = Http::new_with_token(&token);
 
